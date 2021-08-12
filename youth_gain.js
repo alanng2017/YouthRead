@@ -95,13 +95,13 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
         $.msg("中青看点看看赚", '共完成' + (lookArr.length + startArr.length) + '次任务，共计获得' + parseInt(lookscore + gainscore) + '个青豆');
     }
     if ($.isNode()) {
+      await notify.sendNotify($.name, `共完成${lookArr.length + startArr.length}次任务，共计获得${parseInt(lookscore + gainscore)}个青豆`)
         
     }
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
-    await notify.sendNotify($.name, `共完成${$.index}次任务，\n共计获得${gainscore}个青豆`)
-
+    
 function GainStart() {
     return new Promise((resolve, reject) => {
         $.post(gainHost('task/browse_start.json', gainbody), async(error, resp, data) => {
