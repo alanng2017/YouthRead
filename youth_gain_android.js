@@ -204,7 +204,8 @@ function gainHost(api, body) {
         headers: {
             'User-Agent': 'KDApp/2.1.1 (iPhone; iOS 14.6; Scale/3.00)',
             'Host': 'kandian.youth.cn',
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'device-platform': 'android'
         },
         body: body
     }
