@@ -600,10 +600,11 @@ def withdraw(body):
   :return:
   """
   time.sleep(0.3)
-  url = 'https://ios.baertt.com/v5/wechat/withdraw2.json'
+  url = 'https://kandian.youth.cn/v5/wechat/withdraw2.json'
   headers = {
-    'User-Agent': 'KDApp/1.8.0 (iPhone; iOS 14.2; Scale/3.00)',
-    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'    
   }
   try:
     response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
