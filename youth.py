@@ -772,7 +772,7 @@ def run():
         if with_draw_res:
           result += f'\n【自动提现】：发起提现1元成功'
           content += f'\n【自动提现】：发起提现1元成功'
-          send(title=title, content=f'【账号】: {sign_info["user"]["nickname"]} 发起提现1元成功')
+          #send(title=title, content=f'【账号】: {sign_info["user"]["nickname"]} 发起提现1元成功')
 
       result += f'\n【今日收益】：+{"{:4.2f}".format(today_score / 10000)}'
       content += f'\n【今日收益】：+{"{:4.2f}".format(today_score / 10000)}'
@@ -782,7 +782,13 @@ def run():
       content += f'\n【历史收益】：{"{:4.2f}".format(total_score / 10000)}\n'
 
   print(content)
-  send(title=title, content=result)  
+  # 每天 21:00 后发送消息推送
+  if beijing_datetime.hour == 21 and beijing_datetime.minute >= 10 and beijing_datetime.minute < 25:
+    send(title=title, content=result)
+  elif not beijing_datetime.hour == 21:
+    print('未进行消息推送，原因：没到对应的推送时间点\n')
+  else:
+    print('未在规定的时间范围内\n') 
 
 if __name__ == '__main__':
     run()   
