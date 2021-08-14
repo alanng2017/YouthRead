@@ -8,7 +8,8 @@ def get_filename(path,filetype):  # 输入路径、文件类型例如'.csv'
     for root,dirs,files in os.walk(path):
         for i in files:
             if os.path.splitext(i)[1]==filetype:
-                name.append(i)    
+                name.append(i)
+                name.sort()
     return path+name[-1]
 
 def readLog(path):    
