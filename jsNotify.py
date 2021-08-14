@@ -45,7 +45,6 @@ def run():
       send(title='中青看看赚（苹果）', content=readLog(iosPath))
     elif beijing_datetime.hour == 8 and beijing_datetime.minute >= 30 and beijing_datetime.minute < 45:
       send(title='中青看看赚（安卓）', content=readLog(androidPath))
-    elif beijing_datetime.hour == 8 and beijing_datetime.minute >= 30 and beijing_datetime.minute < 45:
       send(title='中青阅读', content=readLog(readPath))
     elif beijing_datetime.hour == 18 and beijing_datetime.minute >= 30 and beijing_datetime.minute < 45:
       send(title='中青阅读', content=readLog(readPath))
