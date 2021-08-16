@@ -941,7 +941,7 @@ def run():
       score = int(stat_res["user"]["score"])
       total_score = int(stat_res["user"]["total_score"])
 
-      if score >= 10000 and withdrawBody:
+      if score >= 10000 and withdrawBody and beijing_datetime.hour == 9:
         time.sleep(random.uniform(1.0,5.0))
         with_draw_res = withdraw(body=withdrawBody)
         if with_draw_res:
