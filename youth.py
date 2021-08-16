@@ -667,6 +667,159 @@ def startApp(headers, body):
     print(traceback.format_exc())
     return
 
+def BoxReward(headers):
+  """
+  看看赚宝箱
+  :param headers:
+  :return:
+  """
+  for i in range(3):
+    time.sleep(0.3)
+    url = f'{YOUTH_HOST}Nameless/getBoxReward?{headers["Referer"].split("?")[1]}&id={i}'
+    try:
+      response = requests_session().get(url=url, headers=headers, timeout=30).json()
+      print('看看赚宝箱')
+      print(response)
+      if response['status'] == 1:
+        return response
+      else:
+        return
+    except:
+      print(traceback.format_exc())
+      return
+
+def HourReward():
+  """
+  每小时宝箱
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://kandian.youth.cn/v5/CommonReward/toGetReward.json'
+  headers = {
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'
+    }
+  body = 'p=WFbVGOYyXwIo%3DPJZSHj2C1addkaLjdXJMlQmpx8pR8W45Fs-niU9Q56uMZo8lcRsDLyn6rgaMVuvsjgeCVLX33m13qRN35lfYeOgU2ljxPJ9nJEz_N8_8qSSp8gswQQpt_cwwjQxlzFclM8BYc9Y9m9T_MPQ0LrnsLVZM2wvFUqaQDdAG41FnFqPpSU3j8c53NVS20p_q8r_s8XDPXgyJc7DUZWgMVlLCyOBQFnsfZNJTmWeoPb9SoodIA8JoCu6Mkp5jMY4oIdQXe4hc7vPVZd-gc4kXs3GD94UMrlBAzrXd5aq5q8XkEPzxg28LSwhPY5tZACOSrG1hQ_EBcokdYHixfRV1d-It-yDSs-MSlbjvcfBliiRMzRA5nc87H0xBUML0dSOCwnPNma0aqiWQR6DnGEq2ybfXKA9Id7LEHjfU1stwHyYv36tqiIh720BoSBv-KaGz8X8lNsq0CGn2A2YlcPHtHGfH7vPhflT1Fy5vEOYUWx2wf5wsupCtCy59dDlASspZxgzaqDtC274oGNQpcd_WZmJ65MxOoD3_HNMJlZHAd21_T9NvDgumseU9Z6_sho384ot96SsShz6_kAb_UC8ruxQdSsX8s9mzrfCWAav7y7OWWks4VWKnhcqMtWvM55Dh1Ld-QDSCmga96Wn7p2v-NSU6sMlDG7bkSi-KZyCpJ98iWb2GDxZ7TbQ9y4C8IYiRGPuiAXi8b2qd1DSC52ZZrTO5tOuUxXJUsNRGvOMvu2DQTpxUw7jvF2uW5T1u0BYcTyw9h49N2dlAxXQAGaHrx99MshyTF2UUPc6L2tuAMmm4W49WkKVves8nPs2Mm_mFmuOsffXWqhclZBR9gabaFZ6oEiesuFk1trdLsFSCaP1PBgLgtGiNwaiRtGH0ER-ncmW0RxcC_f2wyoE1aTIgpvp-1TBtVAJwUCvMWbLFVzk3VT7pw1OwcHiI18ORbr5nIC0NztVz2RV6hiLvCV436t-E_Fiz0Csnh_jNrHjziW391hO-hoJZBlJQPREmiQC1VxmQ4F_wcDjDjOgKcvbC0FAS7rTzrmAntQjM6DBdnnr0KIJbZDM2e1XQd2wrqdJ0f5Z6r3ryk3Pc9zB0gtmGZZC2cCSsc--Chd8DKahKS6QQy8dSz89KySSvdm1XeBjlhXvLbq3CZm1xv3EQzyD8vCyO3Mgq-zgoCklHZJCbN9drOkNl-_aHYC2dLdNNaDvogKgBgtpVlBv0KFvCDNE_ZKVo0zED-0fKVZvLtm5SEoRR-PPye9xTISMIp7gnAF5rLRFtXt40Gu-I2bkA2sJgQ5ap7nbpg6JHynQl2hAh63xjuaMuSRl5otOrMVC1gXDeRytnza_rDmJgIVIf8vecAxLV5vAxW-Ui-6c3mQrHgGcRWD8tOs3pG0GRaFwOrpFt_nH8IZWgXS40h5C181dNBHfnNX6ZcvkKQVPEqVOgaF7-7HtwoGQP-h6gV8CdjHJMvrG8DQAItyTJtBO8KeyzvmjFliiUDVfCJwN9z'
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('每小时宝箱')
+    print(response)
+    if response['success'] == True:
+      return response['items']
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
+
+def Reward500():
+  """
+  500宝箱
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://kandian.youth.cn/v5/CommonReward/toGetReward.json'
+  headers = {
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'
+    }
+  body = 'p=zUJybc31G2V0%3DXINg0tz6Lmb7HFHo3zXtVKoyaorn2gjAgTZy_ayjJlEV70b21JLNPj-ucmLp6iqj9LX5VYGj8wSJTfz3ndgOXjjdRulI1vew2pRjv7rG1GeD88nHe_rxaJJYLEu1eReVkuxcmBz2Knpe-EzsGg12ll6DW3Y2U4Q0XKwIgXpPTISmqIEBo1p78f18ctQ2bUeXM0KJE3kF7_MLDWmJqn5EZ0LBvuEd6_vFxHLiuedCYyfJAZdKX0_JeKYQej4NB2aoy5OKC67Y2umsTuRaXKecVV8dXDFaeeKb3LgSryYkap6HUGewS7R7LREPxrGrbtxvddUCVFccIvo5hXMISdOe5SHdDQ2RecvqEsxylWmnz5cV9RxXVFr7752e35_e1swL3JE-Sb5apa5acQ8k89piDtmjBslrl-QYNevSi8Vuf1JEElvO1JsQAak7yAx_lxNlJC_gK5FXjJjJOnUXGTKmJBQR6M3rkMeJiKleH17aFy3FMX92bELwgFxz78p-9M_OheIRyxmf7W3-QdaTLZYxwKdEGlWZvcd-uZ65RDjx2Av8CLZxBZvLL834WPgjWsqPaBr6fIz8TGhPFRQ9b0jXwb4ooVN4S5dgyCvFPViO2GpOyXavBrrwkQAsfa9Oh2ybzKYs8xzhD82Vuryd-tn2BMX-xUXN8KZYLDKVPJqUTtqB-dp52Mp_42Qx69pVmaLSOrfN9WExMGcoggvoeaIB_0Xx7cMkS4wT5WebNRynFisaUrcKJHX9XceMGPJx14bKtrPLqNDOmnc9xpVu54612YeiHsnQAVQagELc1rUg-FEvRBZmn725xgMjPnNznN0fHAXbnWrKgut0fpLr-zkCxIMCE9DAp3oWW03nKQVPQV77uIC1gWvDwrL6W42gGTsQSl6JBFmzPN9ku5_BDzCSzbV9sHwlLo6LDv0E3V0_eVH9j9ydhB-gfe4vEe5uObsTZB5nv_WG-orxe66APwlPHUKk2YzD0Aeva2rcgmocv6B0cDDK8-lQS4A5po9QJGixocJWRq0yUHT8AW7HvHELvTYcywQvEnwQjGkWa6O5MGGrddZGXrouDI7grK8rcLAuZIkKAKuOsBqNBP14QmlAdx7fZeRznuoUImdk-xcb-h64yYe0k05DDL7eq8VIIG2Tzv1YWrDpaitKJTn40bqP8RjaOoV1SE_Ik_TADcU_44HRKu5AOE2nDUdbN01-reeu_RaBEMlqUwC-570ojZM2R61OxtBCpVgefApbMbN6pRMigZSYADYCXamp8x2YzYSmWyuXHFUGoq1pKEuHSfb_8dGBjN_duiyc2iUOZIDTuwWie0_8VcNCicUjX4tdewo5P0e2Z8wB_2KKbMb-yikJoEzJcmPqM4ogNwpeSpX5d7kT66iOUDUQPMoE54_Bb8oUhlikK4eyZcYOfHUwynWZ2SKlxbY8kgHWBoBZ6H2vN87yTAJ9WFeO4IhORVYyKcDFkBa_poLEu0j3JKIK-NYFeK4Wr4kcwbY214Zi4V1wPbw%3DX6'
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('500宝箱')
+    print(response)
+    if response['success'] == True:
+      return response['items']
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
+def Reward188():
+  """
+  188宝箱
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://kandian.youth.cn/v5/CommonReward/toGetReward.json'
+  headers = {
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'
+    }
+  body = 'p=qXPkPrW1Kghg%3DkTqmBCfm4ulIWdd7gfmMtvSn_iwOPi6kvzxVXtIW3kfVaN0ktEDE1MXlHDBOoBMj6vyhg_ZVaTih8vZPVb6Z8_Ld2aUbhdiQtsB_rwqZ0MJSeL8Z1LADDjYWAwu1qItHGwspM2qKWdLsyDaoXfy-eINIH0Y_g_xrEm-eEUpNF2qj3of4VR_X4BsRmb731DNJLaC6nizUoBg3YPRRLNSFmPN9q6ouKI_A2AkzK2qcFGDREH8UaZieeaeqj2GFZpOOyNpXnFHUvSuW7CS5X8rJFrufTp4hky7jFeiQ-H5V11wDlfYjbIZpHOSnHiN8LgAep03pxeYlmxkP4_jFapQ8nmP13K_mft9tqgUsVUgw5iSn2CrVljhC5Kykxqy1YPRwJY_KzcGm8yxNsFbWeHfA_MU91yOq4720f-zLolUJeovFKG6cRqKe9GNMWpo0mKgTGAc-su2lB_ujjdvxz_GIpDecaJMQvwk3tQ3f3BIBxL2Y8qTMWZWwePzX-FV_0eU2NUY_LGvjmPC373t25xxTJuv6Ejf4xQDNgUlUyY-NDb_He1fGC6FU2ATkOo8Hnq90yeIXGNqFfVoxkDf9BTYZAzMkCVUCJxil5bH9hKAPNsA-1VGffk90x89h_0K3-5UXhyvsldhtkGQh2e3_KDpcj4hlzy45L2e06J-u__IFlL9dd5JErG9JmpMb4BPRTCfI4CclzlbCX75U33pV6WwyFa-GTJqIDYDjKcOpaZdcXBMu8AyGuCQaJGJcLnTUN8iysye2fe72vPMrcIkGFQ_lMbAoM9r3rXZBtsvcgP8s6GwMGYkoFw9vFjsozZmKWUJj4I-FBmVCMg3j37KX3BduMe1NDc4egz6be1inzuW39uOwa82pU5ovqdnQtD5ZCofkbURufliSmRAFwVQzt4zNakBiQj0v1LMdaajPyDP1bG2J54_mKGYlKLWtZ9rimyMZuTMI_ZfuhN1eV6TH4lRhp4XSNQ5wV2hoDjDWU1KQrFEzcZtAsNYucgdB-dZoA-DvNDnc1G7thpS-5D_P-XgPHsJhMeyFvCXfouGYCcR6W4iTXhjU77Oo_leK020rJn_bdHQyAIu-dD7J-xa27qW66ebveCOEwQl-OdyNRFOCfA4SPXEM_9q08uV1AaFIKWoMt40fdHhJsZGu5e1hlpat1lUVOXUjjhPJrtxA0FWklvLEIIfXjl-vKOPbNboT5bgBCb3lqComAIWnZYdMaj8_D0BhhAv4ZK0_hbCJb39j1SUrMmgKIglP7I4eKhRDP7mG1vUfJF-6bkaP_W1eT15sIz2Nfzw4cC5uS2yFqb-7_7hngtMpdQnXQyGB_f_NKu8KZPRWH9cpi5g4T0k1hP-bslC3R3RT0CfqaGFEdSbvLsFKJf1iur8FbKHDPffnYUBjH99tANwWXTCHIJJtAGi4Yhv40-G63T-pEBkfijBTIoYxULVppi7zd_HIdKvSgq97XlF7dJPJDY9tqQVuQ2a62obSTZ_lpdb9'
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('188宝箱')
+    print(response)
+    if response['success'] == True:
+      return response['items']
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
+def Reward288():
+  """
+  288宝箱
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://kandian.youth.cn/v5/CommonReward/toGetReward.json'
+  headers = {
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'
+    }
+  body = 'p=2CWwRj3eGxCw%3DuHflGrFd-b1kc-NE9EQnVhkbC_q6C4_7SA1JGtjg6TjiqaVXdX8d24UaMwT3JWZJEluRVB6JMb5eueCw90KCDXhvSOHdxkCARe_NguLA4Kz789wqjQY0G5gHQ1m8KyAkAxlR0LJJZV_XLd-nNv62-6Wg02605X0Ah0E-TWP3EF7bdFSWKcEIDQvN0gCQjL23_3nz8ocNO2FL86JjtQno4WNlYrC69HFpnBs0TaVkYm_ofULobzQWIxcXYAtk0e2vG075PbPcv27rNqD3zOSA1bCyz69eRXy_ERwKYBXXgC4LU4tlTOFxjduXqHTuWxiLUVzd8-FY9ApRNoC7x9AdRemaJntVfEXZIX9Zo6KxXlprGZ3DzjmyCHc1D2zQLPi_e2waWCHwsxmiMhBi_VqOTpfDFpUm_HuX6mFNyEOs0HauxoedF0xWrTTVo3J161g9lpv6degV3rg64kWbJ7nBIA0kiEfyHJq7vtfaoEY46Htp1IYWUEFExjlNtezs-wXOSiNThtBE_5LG3oIFX0lmF9XFkfGP4PVBR5TG6U_gd3GYnqH9g4Y2DJC9o-mzZV7IYkmbBsf-2hlMLfPkrVGbQcH3w2DWOcQ2JopcDiHkwjmQ5rtg2B0WnXbwPcopIqa_yNs_lsf5o19sXHF9iJ1_jTnrcgvLmuWqN3FhXn4v6_7rbDgQFWPMvJvEJEBwFncPEOGhSeWfZyx96WvFYdrOTgBOfO94EaUnDJWpDP3-v57YgmhdbW92Sozj-U0CJFmIiZxHkdXQJEGW0Vra-CJYOPGPLEFrk91FwgNaf0G4mOtWQ7CD6Lg_OOwRD1vn05qGISxDTKbiyIcgHA-XEPeI5cHRLLjFWWQ-pvGaOX3RWPLghrFhpHXqvP_30dkj58xoAnH2lPvEpq9XWh0zY6uuyywlB4WJw2o2Cg5gxeGOAxpwL_VlRQvWbFmse3VKEig15HREXEpSrcNwZlJFJS0l5xy22j9YIqeHSlsPgnCDc4dZ-7Wx_FUssWeb33HUdwhWKAkbbN898_H6lWzPlnY6FnkCnenm6koL2N5BzlYiGQFwmz-x7FAq2j_qxhw1NYJhnVvWEEJjtYNNON5hNp7c0QFu9JFHkrKLgKyjV1XFBIB3004md6SqS7e3G0E_6EhrVKdAeHRzZkvxkG_vns4DXsWR-NG98SR9XuyO_M5Okg1eaG7UiTZKeM76qrOFQNlpt7_ue_HDHWAbzhbjg_JH9BSQW8m_zlEZbIVF8SnMfo3q35dC_C0QdUyN538EoDoiHlC0eQyw1I2KQNALjnkSYxMf81H1WI7EUknev4zWjuDk71GYIO3YhsJRtRgZwr7YT0IzS9k48qnOKXw1aF-Y6YA8t5BFoNi2zunMgD05A7JIEBSC2VMAApVgOYCvKputrE0K6qP8GiyE3YlkzBZyOEuMdfG2GB4quYe3s1bmGGfRqjq1nJdG2C9G8A0UKnpBUYEL0hcCsQqcV1pSIGSnXYXDog2RkUHi'
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('288宝箱')
+    print(response)
+    if response['success'] == True:
+      return response['items']
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
+def Reward368():
+  """
+  368宝箱
+  :param headers:
+  :return:
+  """
+  time.sleep(0.3)
+  url = 'https://kandian.youth.cn/v5/CommonReward/toGetReward.json'
+  headers = {
+    'User-Agent': 'okhttp/3.12.2',
+    'Content-Type': 'application/x-www-form-urlencoded',    
+    'device-platform': 'android'
+    }
+  body = 'p=GcTMBiVxDAfc%3Dhet99qMrQT7G8_Iz3y7nCqO3drvlhT2Kut2efSbacLFcx-WBPvHFjQJ5dEjZvbJ7VjxVzIgsVl4uhQhj9Ob0HVzmPLZrUkUZygYQBFZbzhWL7MMrBOI64wd3vcbGAs_mKQR6DjpNMixBFuYoVOkG5cla7dx_eYjTpUX0an4lM6kVWDPqQAN43RAugOiSCzfqdk8ANsHWIYirbWoNsCieSMUPJdqVOJ5XVrOTalybm2ZGk6ZwoTYosOmZwF8hM524o_Z8g5IUwGo-VdAeYlG1JvgEOuoRen4n7Kyyckp1s197Eh9dmgPPKGAwSFe4zMrm9rG-0ZGq1CRBD1GB9dOzP14l7w9mtmeuuuhWg-FE8v23XCYJCDRaF2jIqfKQXErdjM38qqi5lnH0hfMBONWhMzmdO3W7sk9ScdYR45qEh3lG5rSPfGQYHukIOpR0uK-W1v9pyHslpIJKYRpXSKFHUPGZD0nZbOiM7QxLMtjHxgRAZyZ74m6D-rMSdumPyoj720LQTe-h0FhRFGO2cqfXWvZJ4AhQcOsaNMsY78a2JYumTUxjwBH-a8QfgHt8ShxK_T_B9KlawHd15zTKOQ7ejvwRucSm_Qy8vjZeAtYlMplmjGg8FSjs08xYf3ZG7NGFjo6WDFNgFV_coVO3OlN-NIKA22yX6jtBAdqxuxL_7muDy8vTZaDo0po9SCnsoruy1LlcVv0aQMkxnUHFjMIXVvrH8gUJJA-UJlWQ1VuU48rn_VP4Ma4LvZMVM-mbZIgXBeEv2tdNvDPpv3wu94gjLaqNvcMlTN66N5xo9CTyLmAQ7uvwYPOS-grGHqnzosUJ9A8i4h6lBwr9Qnvvrvd_uXk-RPQYJUC0GAn3aqIj95HfprPI2XXDL6tcF1glzWX1irSAp26OIFUTDZfjXQjW_wDu1Wr4s32MN6F9Q_Ykkn5UYohCQSKodMlPcOQG65ap96wnEMnBdcn8D7_sTbISH-BmOdhmN_G1MEEMiRjfXiNyiO-V5eHSavSaVAxflTgIdgcIcysOJPtnpRt_61dg4P2bjKHbhlScpVRaH1lg85bj4rVotQGVl-Qwv6pC3cg3sEHkBJSrTr7yjZ0dqy-e9y3Y5PDc430ZYnGC-2TBhi1L9_EjPLzZnwWJup7TWlS8A2R8Cywk_Phq4f_n3Zz_sL7fuzT_66f6j6EYn44TV-NMIkkRFF0cfn0537T6Fb36OyLTTSFR8B3q_6nhAMTEh2FItLp-9R6VV9KQe3bYtuVjD61KvujywF5O9Ef7o02tjnvAMZRxwNfucZ9sTXWsayZlim0FrbbF4gE1egnApFFscm_SUrj_P19EOvB2lyiwNzSC_3004hPiViD4TU--T_DNs9GFti0gbLIntstqy-3fWHudZUjRLSsbEJT8ZFrzQtujAYFgyb3u3BRe98MXYDxRPC7cOm6-g_Xe4g1hmO3M-LRYRTsVlP_u_i6_CgOdiGHRpa_Uc40MG4iGzf2SgNg_74Vy3KsGm'
+  try:
+    response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
+    print('368宝箱')
+    print(response)
+    if response['success'] == True:
+      return response['items']
+    else:
+      return
+  except:
+    print(traceback.format_exc())
+    return
+
+###
 def run():
   title = f'📚中青看点'
   content = ''
@@ -759,6 +912,26 @@ def run():
     for action in ['watch_article_reward', 'watch_video_reward', 'read_time_two_minutes', 'read_time_sixty_minutes', 'new_fresh_five_video_reward', 'first_share_article']:
       time.sleep(5)
       sendTwentyScore(headers=headers, action=action)
+##  自定义内容如下：
+    hour_reward_res = HourReward()
+    if hour_reward_res:
+      content += f'\n【每小时宝箱】：+{hour_reward_res["score"]}个青豆'
+
+    if beijing_datetime.hour == 17 and beijing_datetime.minute >= 10 and beijing_datetime.minute < 25:
+      BoxReward(headers=headers)
+      reward500_res = Reward500()
+      if reward500_res:
+        content += f'\n【500宝箱】：+{hour_reward_res["score"]}个青豆'
+      reward188_res = Reward188()
+      if reward188_res:
+        content += f'\n【188宝箱】：+{hour_reward_res["score"]}个青豆' 
+      reward288_res = Reward288()
+      if reward288_res:
+        content += f'\n【288宝箱】：+{hour_reward_res["score"]}个青豆'    
+      reward368_res = Reward368()
+      if reward368_res:
+        content += f'\n【368宝箱】：+{hour_reward_res["score"]}个青豆'   
+##
     stat_res = incomeStat(headers=headers)
     if stat_res['status'] == 0:
       for group in stat_res['history'][0]['group']:
@@ -772,7 +945,7 @@ def run():
         if with_draw_res:
           result += f'\n【自动提现】：发起提现1元成功'
           content += f'\n【自动提现】：发起提现1元成功'
-          #send(title=title, content=f'【账号】: {sign_info["user"]["nickname"]} 发起提现1元成功')
+          # send(title=title, content=f'【账号】: {sign_info["user"]["nickname"]} 发起提现1元成功')
 
       result += f'\n【今日收益】：+{"{:4.2f}".format(today_score / 10000)}'
       content += f'\n【今日收益】：+{"{:4.2f}".format(today_score / 10000)}'
@@ -782,13 +955,14 @@ def run():
       content += f'\n【历史收益】：{"{:4.2f}".format(total_score / 10000)}\n'
 
   print(content)
+
   # 每天 21:00 后发送消息推送
   if beijing_datetime.hour == 21 and beijing_datetime.minute >= 10 and beijing_datetime.minute < 25:
     send(title=title, content=result)
   elif not beijing_datetime.hour == 21:
     print('未进行消息推送，原因：没到对应的推送时间点\n')
   else:
-    print('未在规定的时间范围内\n') 
+    print('未在规定的时间范围内\n')
 
 if __name__ == '__main__':
-    run()   
+    run()
