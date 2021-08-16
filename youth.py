@@ -5,6 +5,7 @@
 
 import traceback
 import time
+import random
 import re
 import json
 import sys
@@ -941,6 +942,7 @@ def run():
       total_score = int(stat_res["user"]["total_score"])
 
       if score >= 10000 and withdrawBody:
+        time.sleep(random.uniform(1.0,5.0))
         with_draw_res = withdraw(body=withdrawBody)
         if with_draw_res:
           result += f'\n【自动提现】：发起提现1元成功'
