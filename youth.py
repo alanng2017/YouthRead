@@ -675,16 +675,13 @@ def BoxReward(headers):
   :return:
   """
   for i in range(3):
+    print(i)
     time.sleep(0.3)
     url = f'{YOUTH_HOST}Nameless/getBoxReward?{headers["Referer"].split("?")[1]}&id={i}'
     try:
       response = requests_session().get(url=url, headers=headers, timeout=30).json()
       print('看看赚宝箱')
-      print(response)
-      if response['status'] == 1:
-        return response
-      else:
-        return
+      print(response)      
     except:
       print(traceback.format_exc())
       return
@@ -967,4 +964,4 @@ def run():
     print('未在规定的时间范围内\n')
 
 if __name__ == '__main__':
-    run()
+    run()  
