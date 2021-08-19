@@ -824,6 +824,7 @@ def run():
   result = ''
   beijing_datetime = get_standard_time()
   print(f'\n【中青看点】{beijing_datetime.strftime("%Y-%m-%d %H:%M:%S")}')
+  time.sleep(random.uniform(1.0,5.0))
   hour = beijing_datetime.hour
   for i, account in enumerate(COOKIELIST):
     headers = account.get('YOUTH_HEADER')
