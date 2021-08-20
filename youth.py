@@ -824,7 +824,6 @@ def run():
   result = ''
   beijing_datetime = get_standard_time()
   print(f'\n【中青看点】{beijing_datetime.strftime("%Y-%m-%d %H:%M:%S")}')
-  time.sleep(random.uniform(1.0,5.0))
   hour = beijing_datetime.hour
   for i, account in enumerate(COOKIELIST):
     headers = account.get('YOUTH_HEADER')
@@ -918,18 +917,22 @@ def run():
 
     if beijing_datetime.hour == 17 and beijing_datetime.minute >= 10 and beijing_datetime.minute < 25:
       BoxReward(headers=headers)
-      reward500_res = Reward500()
+      time.sleep(0.3)
+      reward500_res = Reward500()      
       if reward500_res:
-        content += f'\n【500宝箱】：+{hour_reward_res["score"]}个青豆'
+        content += f'\n【500宝箱】：+{reward500_res["score"]}个青豆'
+      time.sleep(0.3)
       reward188_res = Reward188()
       if reward188_res:
-        content += f'\n【188宝箱】：+{hour_reward_res["score"]}个青豆' 
+        content += f'\n【188宝箱】：+{reward188_res["score"]}个青豆' 
+      time.sleep(0.3)
       reward288_res = Reward288()
       if reward288_res:
-        content += f'\n【288宝箱】：+{hour_reward_res["score"]}个青豆'    
+        content += f'\n【288宝箱】：+{reward288_res["score"]}个青豆' 
+      time.sleep(0.3)   
       reward368_res = Reward368()
       if reward368_res:
-        content += f'\n【368宝箱】：+{hour_reward_res["score"]}个青豆'   
+        content += f'\n【368宝箱】：+{reward368_res["score"]}个青豆'   
 ##
     stat_res = incomeStat(headers=headers)
     if stat_res['status'] == 0:
@@ -965,4 +968,5 @@ def run():
     print('未在规定的时间范围内\n')
 
 if __name__ == '__main__':
-    run()  
+  run()
+  
