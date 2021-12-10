@@ -5,22 +5,6 @@ let zq_cookie= $.isNode() ? (process.env.zq_cookie ? process.env.zq_cookie : "")
 let zq_cookieArr = ['zqkey=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualIejl7&uid=58339453']
 let zq_cookies = ""
 
-if ($.isNode()) {
-    if (zq_cookie.indexOf("@") == -1 && zq_cookie.indexOf("@") == -1) {
-        zq_cookieArr.push(zq_cookie)
-    } else if (zq_cookie.indexOf("@") > -1) {
-        zq_cookies = zq_cookie.split("@")
-    } else if (process.env.zq_cookie && process.env.zq_cookie.indexOf('@') > -1) {
-        zq_cookieArr = process.env.zq_cookie.split('@');
-        console.log(`您选择的是用"@"隔开\n`)
-    }
-}
-Object.keys(zq_cookies).forEach((item) => {
-    if (zq_cookies[item] && !zq_cookies[item].startsWith("#")) {
-        zq_cookieArr.push(zq_cookies[item])
-    }
-})
-
 !(async () => {
      if (typeof $request !== "undefined") {
     getzq_cookie()
